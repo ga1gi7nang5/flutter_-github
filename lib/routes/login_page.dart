@@ -1,4 +1,5 @@
 import '../export.dart';
+import 'package:flutter_github/states/user.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key key, this.title}) : super(key: key);
@@ -17,13 +18,12 @@ class _LoginPageState extends State<LoginPage> {
   bool passwordShow = false;
   GlobalKey _formKey = new GlobalKey<FormState>();
   bool _nameAutoFocus = false;
-  bool _isLoginBtnDisabled = true;
+  bool _isLoginBtnDisabled = false;
 
 
   @override
   void initState() {
     _nameController.text = Global.profile.lastLogin;
-    print(_nameController.text != null);
     if (_nameController.text != null) {
       _nameAutoFocus = true;
     }
@@ -33,6 +33,26 @@ class _LoginPageState extends State<LoginPage> {
   void _onLogin() async {
     if ((_formKey.currentState as FormState).validate()) {
       showLoading(context);
+      User user;
+      try {
+        user = await Git(context).login(_nameController.text, _passwordController.text);
+        // 因为登录页返回后，首页会build，所以我们传false，更新user后不触发更新
+        Provider.of<UserState>(context, listen: false).user = user;
+      } catch (e) {
+        // 登录失败提示
+        if (e.response?.statusCode == 401) {
+          print('用户名或密码不正确');
+        } else {
+          print(e.toString());
+        }
+      } finally {
+        Navigator.of(context).pop();
+      }
+
+      if (user != null) {
+        // 返回
+        Navigator.pushNamedAndRemoveUntil(context, "home", (Route route) => route == null);
+      }
     }
   }
 
@@ -55,7 +75,7 @@ class _LoginPageState extends State<LoginPage> {
           key: _formKey,
           autovalidate: true,
           child: Padding(
-            padding: EdgeInsets.only(top: ScreenUtil().setWidth(52), left: ScreenUtil().setWidth(28), right: ScreenUtil().setWidth(28)),
+            padding: EdgeInsets.only(top: ScreenUtil().setWidth(52), left: ScreenUtil().setWidth(2), right: ScreenUtil().setWidth(2)),
             child: Column(
               children: <Widget>[
                 TextFormField(
@@ -74,6 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                 TextFormField(
                     controller: _passwordController,
                     autofocus: !_nameAutoFocus,
+                    obscureText: !passwordShow,
                     decoration: InputDecoration(
                       hintText: '密码',
                       suffixIcon: IconButton(
@@ -86,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                       )
                     ),
                     validator: (v) {
-                      return v.trim().isNotEmpty ? null : '登录密码不能为空';
+                      return v.trim().isNotEmpty ? null : '密码不能为空';
                     }
                 ),
                 Container(

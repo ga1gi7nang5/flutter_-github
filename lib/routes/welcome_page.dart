@@ -7,15 +7,14 @@ class WelcomePage extends StatefulWidget {
   _WelcomePageState createState() => _WelcomePageState();
 }
 
-class _WelcomePageState extends State<WelcomePage>  with TickerProviderStateMixin {
+class _WelcomePageState extends State<WelcomePage> {
   Timer _t;
   bool isLogin = false;
 
   @override
   void initState() {
     super.initState();
-    isLogin = Global.profile.lastLogin != null;
-    print(isLogin);
+    isLogin = Global.profile.user != null;
     if (isLogin) {
       _t = new Timer(const Duration(milliseconds: 1500), () {
         try {
@@ -27,7 +26,7 @@ class _WelcomePageState extends State<WelcomePage>  with TickerProviderStateMixi
                   builder: (BuildContext context, Widget child) {
                     return Opacity(
                         opacity: animation.value,
-                        child: new HomePage(title: '首页',)
+                        child: new HomePage()
                     );
                   },
                 );
@@ -49,7 +48,6 @@ class _WelcomePageState extends State<WelcomePage>  with TickerProviderStateMixi
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil(width: 750, height: 1334)..init(context);
-    // TODO: implement build
     return new Material(
       color: new Color.fromARGB(255, 0, 0, 0),
       child: Container(

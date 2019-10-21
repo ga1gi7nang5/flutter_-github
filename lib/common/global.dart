@@ -17,6 +17,9 @@ class Global {
   static SharedPreferences _prefs;
   static Profile profile = Profile();
 
+  // 网络缓存对象
+  static NetCache netCache = NetCache();
+
   // 可选的主题列表
   static List<MaterialColor> get themes => _themes;
 
@@ -30,6 +33,7 @@ class Global {
     var _profile = _prefs.getString('profile');
     if (_profile != null) {
       try {
+        print('获取数据');
         profile = Profile.fromJson(jsonDecode(_profile));
       } catch(e) {
         print(e);
@@ -40,6 +44,9 @@ class Global {
       ..enable = true
       ..maxAge=3600
       ..maxCount=100;
+
+    //初始化网络请求相关配置
+    Git.init();
 
   }
 
