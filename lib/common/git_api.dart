@@ -32,7 +32,7 @@ class Git {
     if (!Global.isRelease) {
       (dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate = (client) {
         client.findProxy = (uri) {
-          return "PROXY 192.168.217.59:8888";
+          return "PROXY 192.168.216.157:8888";
         };
         //代理工具会提供一个抓包的自签名证书，会通不过证书校验，所以我们禁用证书校验
         client.badCertificateCallback =
