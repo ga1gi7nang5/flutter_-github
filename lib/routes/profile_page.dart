@@ -29,7 +29,10 @@ class _ProfilePageState extends State<ProfilePage> {
               MenuItem(icon: MyIcons.gists, title: '代码片段',hasBorder: false,)
             ],),
             Menus(children: [
-              MenuItem(icon: MyIcons.setting1, title: '设置',hasBorder: false,)
+              MenuItem(icon: MyIcons.setting1, title: '设置',hasBorder: false, onPressed: () {
+                print('ddd');
+                Navigator.pushNamed(context, 'setting');
+              },)
             ],)
           ],
         ),

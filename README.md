@@ -40,3 +40,8 @@ flutter_github
 │  └─widgets (APP内封装的一些Widget组件都在该目录下)
 └─test (测试目录)
 ```
+
+## 优化功能点
+
+1. 主题定制
+2. 登录界面优化

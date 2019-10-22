@@ -18,7 +18,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Color _colorTabMatching({LayoutType layoutSelection}) {
-    return _layoutSelection == layoutSelection ? Colors.cyan[300] : Colors.grey;
+    return _layoutSelection == layoutSelection ? Theme.of(context).accentColor : Colors.grey;
   }
 
   BottomNavigationBarItem _buildItem({IconData icon, LayoutType layoutSelection}) {

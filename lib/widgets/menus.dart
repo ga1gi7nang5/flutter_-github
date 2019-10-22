@@ -26,7 +26,7 @@ class Menus extends StatelessWidget {
 }
 
 class MenuItem extends StatelessWidget {
-  MenuItem({Key key, @required this.icon, @required this.title, this.hasBorder= true, this.onPressed}) : super(key: key);
+  MenuItem({Key key, this.icon, @required this.title, this.hasBorder= true, this.onPressed}) : super(key: key);
 
   final IconData icon;
   final String title;
@@ -40,11 +40,13 @@ class MenuItem extends StatelessWidget {
       onTap: onPressed,
       child: Row(
         children: <Widget>[
-          Icon(icon, color: Color(0Xff605f5f), size: 20.0,),
+          icon !=null ? Container(
+            margin: EdgeInsets.only(right: ScreenUtil().setWidth(20)),
+            child: Icon(icon, color: Color(0Xff605f5f), size: 20.0,),
+          ) : Container(),
           Expanded(
             flex: 1,
             child: Container(
-              margin: EdgeInsets.only(left: ScreenUtil().setWidth(20)),
               padding: EdgeInsets.only(right: ScreenUtil().setWidth(40), top: ScreenUtil().setWidth(20), bottom: ScreenUtil().setWidth(20)),
               decoration: hasBorder ? BoxDecoration(
                 border: Border(bottom: borderStyle)
