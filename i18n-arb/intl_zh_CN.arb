@@ -1,0 +1,20 @@
+{
+  "@@last_modified": "2019-10-23T15:26:15.866609",
+  "@@locale":"zh_CN",
+  "title": "GitHub",
+  "@title": {
+    "description": "Title for the Demo application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "login": "登录",
+  "@login": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "多语言",
+  "@language": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

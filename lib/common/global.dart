@@ -33,7 +33,6 @@ class Global {
     var _profile = _prefs.getString('profile');
     if (_profile != null) {
       try {
-        print('获取数据');
         profile = Profile.fromJson(jsonDecode(_profile));
       } catch(e) {
         print(e);

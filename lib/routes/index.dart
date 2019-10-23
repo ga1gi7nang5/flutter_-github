@@ -1,3 +1,5 @@
+export 'setting/language_page.dart';
+export 'setting/theme_page.dart';
 export 'home_page.dart';
 export 'login_page.dart';
 export 'notification_page.dart';

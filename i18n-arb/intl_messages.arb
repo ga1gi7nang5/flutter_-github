@@ -1,0 +1,19 @@
+{
+  "@@last_modified": "2019-10-23T15:26:15.866609",
+  "title": "GitHub",
+  "@title": {
+    "description": "Title for the Demo application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "login": "Login",
+  "@login": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "Language",
+  "@language": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

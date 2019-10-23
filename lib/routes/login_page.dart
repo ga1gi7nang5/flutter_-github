@@ -66,9 +66,10 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    var gm = GmLocalizations.of(context);
+
     return Scaffold(
-      appBar: AppBar(title: Text('登录'),),
+      appBar: AppBar(title: Text(gm.login),),
       body: Padding(
         padding: EdgeInsets.all(16),
         child: Form(
@@ -119,7 +120,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Color(0xff28a745),
                     disabledColor: Color(0xff69bf7d),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(ScreenUtil().setWidth(90) / 2))),
-                    child: Text('登录', style: TextStyle(color: Color(0xff0d1917), fontSize: ScreenUtil().setSp(30)),),
+                    child: Text(gm.login, style: TextStyle(color: Color(0xff0d1917), fontSize: ScreenUtil().setSp(30)),),
                   )
                 ),
               ],

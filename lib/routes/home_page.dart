@@ -26,7 +26,7 @@ class _HomePageState extends State<HomePage> {
     Color selectionColor = _colorTabMatching(layoutSelection: layoutSelection);
     return BottomNavigationBarItem(
         icon: Icon(icon, color: selectionColor,),
-        title: Text(text, style: TextStyle(color: selectionColor, fontSize: 12.0),)
+        title: Text(text, style: TextStyle(color: selectionColor),)
     );
   }
 
