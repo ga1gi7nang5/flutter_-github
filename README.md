@@ -41,6 +41,12 @@ flutter_github
 └─test (测试目录)
 ```
 
+## 生成Model类
+
+```aidl
+flutter packages pub run json_model
+```
+
 ## 多语言开发流程
 
 1. 在lib/i18n添加-localization_int.dart文件;

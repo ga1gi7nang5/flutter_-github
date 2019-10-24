@@ -62,4 +62,15 @@ class Git {
     return User.fromJson(r.data);
   }
 
+  Future<List<Repo>> getRepos({Map<String, dynamic> queryParameters, type="repos", refresh = false}) async {
+    if (refresh) {
+      _options.extra.addAll({"refresh": true, "list": true});
+    }
+    var r = await dio.get<List>("user/$type",
+      queryParameters: queryParameters,
+      options: _options,
+    );
+    return r.data.map((e) => Repo.fromJson(e)).toList();
+  }
+
 }
